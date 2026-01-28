@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pak Kissan</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: 'Times New Roman', Times, serif;
+            background-color: greenyellow;
+            margin: 0;
+        }
+
+        header {
+            background-color: antiquewhite;
+            padding: 50px;
+            font-size: 3.5rem;
+            color: green;
+            font-weight: bold;
+        }
+
+        section {
+            margin: 30px auto;
+            width: 50%;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px gray;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        input, select, textarea {
+            padding: 10px;
+            font-size: 1rem;
+            border: 1px solid gray;
+            border-radius: 5px;
+            width: 100%;
+        }
+
+        label {
+            font-weight: bold;
+            text-align: left;
+        }
+
+        .button {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .button input {
+            width: 48%;
+            padding: 10px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .button input[type="submit"] {
+            background-color: green;
+            color: white;
+        }
+
+        .button input[type="reset"] {
+            background-color: red;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <header>Kissan Contact</header>
+
+    <section>
+        <form>
+            <p style="font-size: 1.2rem;">ہماری فیملی میں شامل ہو جاؤ</p>
+
+            <label for="name">Name</label>
+            <input type="text" id="name" placeholder="I'D Card Name" required>
+
+            <label for="idcard">I'D Card No.</label>
+            <input type="text" id="idcard" placeholder="Enter your ID Card No." required>
+
+            <label for="land">Land Area:</label>
+            <select id="land">
+                <option>1 Acre</option>
+                <option>2 Acres</option>
+                <option>3 Acres</option>
+                <option>4 Acres</option>
+                <option>5 Acres</option>
+                <option>6 Acres</option>
+                <option>7 Acres</option>
+                <option>8 Acres</option>
+                <option>9 Acres</option>
+                <option>10 Acres</option>
+            </select>
+
+            <label>Add Your Contact Number or Email</label>
+            <div style="text-align: left;">
+                <input type="radio" name="contact" value="Phone"> Phone
+                <input type="radio" name="contact" value="Email"> Email
+            </div>
+
+            <input type="text" id="number" placeholder="Phone Number">
+            <input type="email" id="email" placeholder="Email">
+
+            <label for="message">Further Information about Land</label>
+            <textarea id="message" rows="3" placeholder="Write your details here"></textarea>
+
+            <div class="button">
+                <input type="reset" value="Reset">
+                <input type="submit" value="Submit">
+            </div>
+        </form>
+    </section>
+</body>
+</html>
