@@ -1,105 +1,396 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ur" dir="ltr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pak Kissan</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pak Kissan – کسان دوست</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <style>
+    /* ── CSS Variables ── */
+    :root {
+      --green-deep:   #1a5c2a;
+      --green-mid:    #2e7d32;
+      --green-light:  #81c784;
+      --green-pale:   #e8f5e9;
+      --gold:         #f9a825;
+      --gold-light:   #fff8e1;
+      --text-dark:    #1b2e1c;
+      --text-mid:     #3e5040;
+      --white:        #ffffff;
+      --radius-lg:    16px;
+      --radius-pill:  999px;
+      --shadow:       0 4px 24px rgba(0,0,0,.12);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Roboto Mono', monospace;
+      background: var(--green-pale);
+      color: var(--text-dark);
+      min-height: 100vh;
+    }
+
+    /* ── TOP SOCIAL BAR ── */
+    .social-bar {
+      background: var(--green-deep);
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      padding: 8px 24px;
+      flex-wrap: wrap;
+    }
+    .social-bar a {
+      color: var(--green-light);
+      text-decoration: none;
+      font-size: .85rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: color .2s;
+    }
+    .social-bar a:hover { color: var(--gold); }
+    .social-bar i { font-size: 1rem; }
+
+    /* ── NAVBAR ── */
+    nav.main-nav {
+      background: var(--green-mid);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 40px;
+      box-shadow: var(--shadow);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--white);
+      font-size: 1.4rem;
+      font-weight: 700;
+      letter-spacing: .03em;
+    }
+    .nav-brand .leaf { font-size: 1.6rem; }
+    nav.main-nav ul {
+      list-style: none;
+      display: flex;
+      gap: 28px;
+    }
+    nav.main-nav ul li a {
+      color: var(--white);
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: var(--radius-pill);
+      transition: background .2s, color .2s;
+    }
+    nav.main-nav ul li a:hover {
+      background: var(--gold);
+      color: var(--green-deep);
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(135deg, var(--green-deep) 0%, var(--green-mid) 60%, #43a047 100%);
+      color: var(--white);
+      text-align: center;
+      padding: 80px 24px 90px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Ccircle cx='30' cy='30' r='1.5' fill='%23ffffff18'/%3E%3C/svg%3E") repeat;
+    }
+    .hero-icon { font-size: 4rem; margin-bottom: 16px; }
+    .hero h1 {
+      font-family: 'Amiri', serif;
+      font-size: clamp(2.4rem, 6vw, 4rem);
+      font-weight: 700;
+      letter-spacing: .04em;
+      margin-bottom: 20px;
+    }
+    .hero-subtitle {
+      font-family: 'Amiri', serif;
+      font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+      line-height: 2;
+      max-width: 720px;
+      margin: 0 auto 32px;
+      opacity: .92;
+      direction: rtl;
+    }
+    .hero-badge {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--green-deep);
+      font-weight: 700;
+      font-size: 1.05rem;
+      padding: 10px 28px;
+      border-radius: var(--radius-pill);
+      letter-spacing: .05em;
+      box-shadow: 0 4px 12px rgba(0,0,0,.2);
+    }
+
+    /* ── SECTION WRAPPER ── */
+    .section {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 60px 24px;
+    }
+
+    /* ── FEATURE CARDS ── */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 24px;
+      margin-top: 40px;
+    }
+    .card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 32px 24px;
+      text-align: center;
+      box-shadow: var(--shadow);
+      border-top: 5px solid var(--green-mid);
+      transition: transform .25s, box-shadow .25s;
+    }
+    .card:hover { transform: translateY(-6px); box-shadow: 0 10px 32px rgba(0,0,0,.15); }
+    .card .icon { font-size: 2.6rem; margin-bottom: 14px; }
+    .card h3 {
+      font-size: 1.05rem;
+      color: var(--green-deep);
+      margin-bottom: 8px;
+    }
+    .card p { font-size: .85rem; color: var(--text-mid); line-height: 1.7; }
+
+    /* ── SECTION HEADING ── */
+    .section-title {
+      text-align: center;
+      font-family: 'Amiri', serif;
+      font-size: clamp(1.6rem, 4vw, 2.2rem);
+      color: var(--green-deep);
+      position: relative;
+      padding-bottom: 14px;
+      margin-bottom: 8px;
+    }
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 60px; height: 4px;
+      background: var(--gold);
+      border-radius: 2px;
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      height: 2px;
+      background: linear-gradient(to right, transparent, var(--green-light), transparent);
+      margin: 0 24px;
+    }
+
+    /* ── CONTACT STRIP ── */
+    .contact-strip {
+      background: var(--gold-light);
+      border-top: 3px solid var(--gold);
+      text-align: center;
+      padding: 28px 24px;
+    }
+    .contact-strip a {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--green-deep);
+      font-weight: 700;
+      font-size: 1.3rem;
+      text-decoration: none;
+    }
+    .contact-strip i { color: #25d366; font-size: 1.8rem; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--green-deep);
+      color: var(--white);
+      text-align: center;
+      padding: 50px 24px 30px;
+    }
+    footer h2 {
+      font-family: 'Amiri', serif;
+      font-size: 1.7rem;
+      margin-bottom: 22px;
+    }
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      flex-wrap: wrap;
+      margin-bottom: 32px;
+    }
+    .footer-links a {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--green-light);
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 600;
+      padding: 8px 20px;
+      border: 2px solid var(--green-light);
+      border-radius: var(--radius-pill);
+      transition: background .2s, color .2s;
+    }
+    .footer-links a:hover { background: var(--green-light); color: var(--green-deep); }
+    .footer-links .yt i  { color: #ff0000; }
+    .footer-links .fb i  { color: #1877f2; }
+
+    .footer-address {
+      font-size: .9rem;
+      color: var(--green-light);
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .map-wrapper {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      max-width: 680px;
+      margin: 0 auto 32px;
+      box-shadow: 0 6px 24px rgba(0,0,0,.3);
+    }
+    .map-wrapper iframe { display: block; width: 100%; height: 360px; border: 0; }
+
+    .footer-credit {
+      font-size: .8rem;
+      color: #a5d6a7;
+      border-top: 1px solid #2e7d3260;
+      padding-top: 20px;
+      margin-top: 10px;
+    }
+    .footer-credit b { color: var(--gold); }
+  </style>
 </head>
-<!-- import google font -->
- 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
-<style>
-    body{
-        font-family:Roboto Mono;
-        text-align: center;
-        font-size: 3rem;
-        margin: 100px;
-    }
-    h1{
-        background-color: lightgreen;
-        color: black;
-        border-radius: 60px;
-        width: 100%;
-    }
-    /* ===== NAVBAR ===== */
-nav{
-    background:green;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:15px 40px;
-    color:white;
-}
-    nav h1{
-    margin:0;
-    font-size:2rem;
-}
-nav ul{
-    list-style:none;
-    display:contents;
-    gap:25px;
-    padding:0;
-}
-nav ul li a{
-    color:white;
-    text-decoration:none;
-    font-size:1.2rem;
-    font-weight:bold;
-}
-nav ul li a:hover{
-    text-decoration:underline;
-}
-    h3{
-        background-color: lightgreen;
-        text-align: center;
-        color:black;
-        border-radius: 60px;
-    }
-    .paragraph{
-        color: black;
-    }
-    footer{
-        font-size: 1.5rem;
-        color: rgba(13, 147, 231, 1);
-    }
-    i{
-        color: rgb(8, 204, 244); 
-      margin-right: 10px; 
-      font-size: 200px;
-    }
-</style>
 <body>
-    <!-- ===== NAVBAR ===== -->
-<nav>
-    <ul>
-        <li><a href="about.html">Home</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="gallery.html">Gallery</a></li>
-    </ul>
-</nav>
-<nav class="media">
-    <div class="social">
-        <a href="https://facebook.com" target="_blank"><i class="fa-brands fa-facebook" style="color:navy;"></i>Facebook</a>
-        <a href="https://youtube.com" target="_blank"><i class="fa-brands fa-youtube" style="color: red;"></i>YouTube</a>
-        <a href="https://linkedin.com" target="_blank"><i class="fa-brands fa-linkedin" style="color: rgb(14, 194, 244);"></i>Linkedin</a>
+
+  <!-- ── SOCIAL BAR ── -->
+  <div class="social-bar">
+    <a href="https://facebook.com" target="_blank"><i class="fa-brands fa-facebook"></i> Facebook</a>
+    <a href="https://youtube.com" target="_blank"><i class="fa-brands fa-youtube"></i> YouTube</a>
+    <a href="https://linkedin.com" target="_blank"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+  </div>
+
+  <!-- ── NAVBAR ── -->
+  <nav class="main-nav">
+    <div class="nav-brand">
+      <span class="leaf">🌿</span> Pak Kissan
     </div>
-</nav>
-    <h1></i>Kissan Dost</h1>
-    <p class="paragraph">کسانوں سے متعلق معلومات کئی شعبوں میں ہے، جس میں زراعت اور ان کی مشکلات اور ذمہ داریوں جیسے کہ خوراک کی فراہمی شامل ہے</p>
-    <h3>منافہ بھی اور نوکری بھی  ایک ساتھ</h3>
-     <footer>
-        <h2><i class="fa-brands fa-whatsapp"></i>Contact Number:0123456</h2>
-        
-        <h1><b>Checkout Our Social Media</b> </h1>
-        <a href="https://www.youtube.com/@kissanpakistan"> <i class="fa-brands fa-youtube"> </i>YOUTUBE</a>  
-        <a href="https://www.facebook.com/kissanghar.pk/"><i class="fa-brands fa-facebook"></i>FACEBOOK</a>   
-        <p><b>Address : </b> Lahore, District Lahore Punjab Pakistan</p>
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d435519.22744032403!2d74.00471645165393!3d31.483103654855885!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39190483e58107d9%3A0xc23abe6ccc7e2462!2sLahore%2C%20Pakistan!5e0!3m2!1sen!2s!4v1762320377272!5m2!1sen!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-    </footer>
-    <p id="para">-----------------------------------------------------------------</p>
-    <h6> A Project By GTTI Student <b>: MUHAMMAD IMTIAZ </b></h6>
+    <ul>
+      <li><a href="about.html">Home</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+    </ul>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <section class="hero">
+    <div class="hero-icon">🌾</div>
+    <h1>کسان دوست</h1>
+    <p class="hero-subtitle">
+      کسانوں سے متعلق معلومات کئی شعبوں میں ہے، جس میں زراعت اور ان کی مشکلات اور
+      ذمہ داریوں جیسے کہ خوراک کی فراہمی شامل ہے
+    </p>
+    <span class="hero-badge">منافہ بھی اور نوکری بھی — ایک ساتھ</span>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ── FEATURE CARDS ── -->
+  <div class="section">
+    <h2 class="section-title">ہماری خدمات</h2>
+    <div class="cards">
+      <div class="card">
+        <div class="icon">🌱</div>
+        <h3>Modern Farming</h3>
+        <p>Latest agricultural techniques to maximise your yield every season.</p>
+      </div>
+      <div class="card">
+        <div class="icon">💧</div>
+        <h3>Water Management</h3>
+        <p>Efficient irrigation solutions that save water and boost crop health.</p>
+      </div>
+      <div class="card">
+        <div class="icon">📊</div>
+        <h3>Market Prices</h3>
+        <p>Real-time mandi rates so you always sell at the best price.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🤝</div>
+        <h3>Expert Advice</h3>
+        <p>Connect with agriculture experts for personalised guidance.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ── CONTACT STRIP ── -->
+  <div class="contact-strip">
+    <a href="tel:0123456">
+      <i class="fa-brands fa-whatsapp"></i>
+      Contact Us: 0123456
+    </a>
+  </div>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <h2>Checkout Our Social Media</h2>
+
+    <div class="footer-links">
+      <a class="yt" href="https://www.youtube.com/@kissanpakistan" target="_blank">
+        <i class="fa-brands fa-youtube"></i> YouTube
+      </a>
+      <a class="fb" href="https://www.facebook.com/kissanghar.pk/" target="_blank">
+        <i class="fa-brands fa-facebook"></i> Facebook
+      </a>
+    </div>
+
+    <p class="footer-address">
+      <i class="fa-solid fa-location-dot"></i>
+      Lahore, District Lahore, Punjab, Pakistan
+    </p>
+
+    <div class="map-wrapper">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d435519.22744032403!2d74.00471645165393!3d31.483103654855885!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39190483e58107d9%3A0xc23abe6ccc7e2462!2sLahore%2C%20Pakistan!5e0!3m2!1sen!2s!4v1762320377272!5m2!1sen!2s"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+
+    <p class="footer-credit">
+      A Project By GTTI Student — <b>MUHAMMAD IMTIAZ</b>
+    </p>
+  </footer>
+
 </body>
 </html>
-correct my mistake and  arrange in beautifull
