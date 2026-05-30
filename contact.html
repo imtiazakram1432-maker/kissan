@@ -1,122 +1,817 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pak Kissan</title>
-    <style>
-        body {
-            text-align: center;
-            font-family: 'Times New Roman', Times, serif;
-            background-color: greenyellow;
-            margin: 0;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pak Kissan – Kissan Contact</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Noto+Nastaliq+Urdu:wght@400;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    /* ── RESET & VARIABLES ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-        header {
-            background-color: antiquewhite;
-            padding: 50px;
-            font-size: 3.5rem;
-            color: green;
-            font-weight: bold;
-        }
+    :root {
+      --green-deep:  #1a3d1f;
+      --green-mid:   #2d6a35;
+      --green-light: #4a9955;
+      --green-pale:  #e8f5e9;
+      --gold:        #f5c842;
+      --gold-dark:   #c89a10;
+      --white:       #ffffff;
+      --offwhite:    #f7f8f3;
+      --text-main:   #1e3320;
+      --text-muted:  #5a7a5e;
+      --border:      #c8ddc9;
+      --red:         #c62828;
+      --shadow:      0 4px 18px rgba(30,61,32,.13);
+      --radius:      12px;
+      --radius-pill: 50px;
+    }
 
-        section {
-            margin: 30px auto;
-            width: 50%;
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px gray;
-        }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--offwhite);
+      color: var(--text-main);
+      min-height: 100vh;
+    }
 
-        form {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
+    /* ── SOCIAL BAR ── */
+    .social-bar {
+      background: var(--green-deep);
+      display: flex;
+      justify-content: flex-end;
+      gap: 24px;
+      padding: 8px 40px;
+    }
+    .social-bar a {
+      color: rgba(255,255,255,.75);
+      text-decoration: none;
+      font-size: .85rem;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: color .2s;
+    }
+    .social-bar a:hover { color: var(--gold); }
+    .social-bar a i { font-size: 1rem; }
 
-        input, select, textarea {
-            padding: 10px;
-            font-size: 1rem;
-            border: 1px solid gray;
-            border-radius: 5px;
-            width: 100%;
-        }
+    /* ── NAVBAR ── */
+    nav.main-nav {
+      background: var(--green-mid);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 40px;
+      box-shadow: var(--shadow);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--white);
+      font-family: 'Lora', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      letter-spacing: .03em;
+      text-decoration: none;
+    }
+    .nav-brand .leaf { font-size: 1.5rem; }
+    nav.main-nav ul { list-style: none; display: flex; gap: 8px; }
+    nav.main-nav ul li a {
+      color: var(--white);
+      text-decoration: none;
+      font-size: .95rem;
+      font-weight: 500;
+      padding: 7px 18px;
+      border-radius: var(--radius-pill);
+      transition: background .2s, color .2s;
+    }
+    nav.main-nav ul li a:hover,
+    nav.main-nav ul li a.active {
+      background: var(--gold);
+      color: var(--green-deep);
+    }
 
-        label {
-            font-weight: bold;
-            text-align: left;
-        }
+    /* ── HERO HEADER ── */
+    header.site-header {
+      background: linear-gradient(135deg, var(--green-deep) 0%, var(--green-mid) 60%, #3d9948 100%);
+      padding: 56px 40px 48px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    header.site-header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg width='52' height='52' viewBox='0 0 52 52' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M26 4 Q28 12 26 20 Q24 12 26 4Z M26 20 Q30 24 28 32 Q26 26 26 20Z M26 20 Q22 24 24 32 Q26 26 26 20Z' fill='white' opacity='0.04'/%3E%3C/svg%3E");
+      background-size: 52px 52px;
+    }
+    header.site-header h1 {
+      font-family: 'Lora', serif;
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: -.01em;
+      position: relative;
+    }
+    header.site-header h1 span {
+      color: var(--gold);
+    }
+    .header-urdu {
+      font-family: 'Noto Nastaliq Urdu', serif;
+      font-size: 1.3rem;
+      color: rgba(255,255,255,.8);
+      margin-top: 10px;
+      position: relative;
+      direction: rtl;
+    }
 
-        .button {
-            display: flex;
-            justify-content: space-between;
-        }
+    /* ── MAIN LAYOUT ── */
+    main {
+      max-width: 680px;
+      margin: 48px auto 60px;
+      padding: 0 20px;
+    }
 
-        .button input {
-            width: 48%;
-            padding: 10px;
-            font-size: 1rem;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
+    /* ── FORM CARD ── */
+    .form-card {
+      background: var(--white);
+      border-radius: 20px;
+      box-shadow: 0 8px 40px rgba(30,61,32,.12);
+      overflow: hidden;
+    }
 
-        .button input[type="submit"] {
-            background-color: green;
-            color: white;
-        }
+    .form-card-head {
+      background: var(--green-pale);
+      border-bottom: 1.5px solid var(--border);
+      padding: 22px 32px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .form-card-head .icon-circle {
+      width: 46px; height: 46px;
+      border-radius: 50%;
+      background: var(--green-mid);
+      display: flex; align-items: center; justify-content: center;
+      color: white;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+    .form-card-head h2 {
+      font-family: 'Lora', serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--green-deep);
+      line-height: 1.2;
+    }
+    .form-card-head p {
+      font-size: .85rem;
+      color: var(--text-muted);
+      margin-top: 3px;
+    }
 
-        .button input[type="reset"] {
-            background-color: red;
-            color: white;
-        }
-    </style>
+    form { padding: 32px; display: flex; flex-direction: column; gap: 0; }
+
+    /* ── FIELD GROUP ── */
+    .field-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-bottom: 20px;
+    }
+    .field-row.single { grid-template-columns: 1fr; }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    label.field-label {
+      font-size: .8rem;
+      font-weight: 500;
+      letter-spacing: .8px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .input-wrap { position: relative; }
+    .input-wrap i {
+      position: absolute;
+      left: 13px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #9eb09f;
+      font-size: .95rem;
+      pointer-events: none;
+      transition: color .2s;
+    }
+    .input-wrap.textarea-wrap i { top: 14px; transform: none; }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 11px 14px 11px 38px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: .95rem;
+      color: var(--text-main);
+      background: var(--offwhite);
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      outline: none;
+      transition: border-color .2s, box-shadow .2s, background .2s;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--green-light);
+      background: #fff;
+      box-shadow: 0 0 0 3px rgba(74,153,85,.15);
+    }
+    input.error, select.error, textarea.error {
+      border-color: var(--red);
+      box-shadow: 0 0 0 3px rgba(198,40,40,.12);
+    }
+    input::placeholder, textarea::placeholder { color: #aac0ab; font-weight: 300; }
+
+    select {
+      background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4 6l4 4 4-4' stroke='%234a7c52' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+      padding-right: 36px;
+      cursor: pointer;
+    }
+    textarea { resize: vertical; min-height: 100px; line-height: 1.6; }
+
+    .field-hint {
+      font-size: .75rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+    .error-msg {
+      font-size: .75rem;
+      color: var(--red);
+      margin-top: 2px;
+      display: none;
+    }
+    .error-msg.show { display: block; }
+
+    /* ── DIVIDER ── */
+    .divider {
+      height: 1px;
+      background: var(--border);
+      margin: 8px 0 24px;
+    }
+
+    /* ── CONTACT TOGGLE ── */
+    .contact-section-label {
+      font-size: .8rem;
+      font-weight: 500;
+      letter-spacing: .8px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .radio-group {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .radio-card {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      padding: 11px 16px;
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      cursor: pointer;
+      background: var(--offwhite);
+      transition: all .2s;
+      font-size: .9rem;
+      color: var(--text-muted);
+      font-weight: 500;
+      user-select: none;
+    }
+    .radio-card input[type="radio"] { display: none; }
+    .radio-card .dot {
+      width: 17px; height: 17px;
+      border-radius: 50%;
+      border: 2px solid currentColor;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      transition: border-color .2s;
+    }
+    .radio-card.active {
+      border-color: var(--green-light);
+      background: var(--green-pale);
+      color: var(--green-mid);
+    }
+    .radio-card.active .dot::after {
+      content: '';
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--green-light);
+    }
+
+    /* ── ACRE DOTS ── */
+    .acre-dots {
+      display: flex; gap: 5px; margin-top: 6px;
+    }
+    .acre-dot {
+      width: 11px; height: 11px;
+      border-radius: 3px;
+      background: #d4e6d5;
+      transition: background .25s;
+    }
+    .acre-dot.on { background: var(--green-light); }
+
+    /* ── BUTTONS ── */
+    .btn-row {
+      display: flex;
+      gap: 14px;
+      margin-top: 28px;
+    }
+    .btn-reset {
+      padding: 13px 24px;
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      background: transparent;
+      font-family: 'DM Sans', sans-serif;
+      font-size: .95rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all .2s;
+      display: flex; align-items: center; gap: 7px;
+    }
+    .btn-reset:hover { background: var(--offwhite); border-color: #a0b8a2; }
+
+    .btn-submit {
+      flex: 1;
+      padding: 14px 24px;
+      border: none;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--green-mid) 0%, var(--green-light) 100%);
+      font-family: 'DM Sans', sans-serif;
+      font-size: .95rem;
+      font-weight: 600;
+      color: #fff;
+      cursor: pointer;
+      transition: all .2s;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      letter-spacing: .2px;
+    }
+    .btn-submit:hover {
+      background: linear-gradient(135deg, var(--green-deep) 0%, var(--green-mid) 100%);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(45,106,53,.35);
+    }
+    .btn-submit:active { transform: translateY(0); box-shadow: none; }
+
+    /* ── CUSTOM ALERT MODAL ── */
+    .alert-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(20,40,22,.55);
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+    }
+    .alert-overlay.show { display: flex; animation: fadeIn .2s; }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+    .alert-box {
+      background: #fff;
+      border-radius: 18px;
+      padding: 36px 40px;
+      max-width: 400px;
+      width: 90%;
+      text-align: center;
+      box-shadow: 0 20px 60px rgba(0,0,0,.2);
+      animation: popIn .25s cubic-bezier(.34,1.56,.64,1);
+    }
+    @keyframes popIn { from { transform: scale(.85); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+
+    .alert-icon {
+      width: 64px; height: 64px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.8rem;
+      margin: 0 auto 16px;
+    }
+    .alert-icon.success { background: #e8f5e9; color: var(--green-mid); }
+    .alert-icon.error   { background: #ffebee; color: var(--red); }
+    .alert-icon.warning { background: #fff8e1; color: #c79200; }
+
+    .alert-title {
+      font-family: 'Lora', serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 8px;
+    }
+    .alert-msg {
+      font-size: .9rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+    .alert-msg .urdu {
+      font-family: 'Noto Nastaliq Urdu', serif;
+      font-size: 1rem;
+      direction: rtl;
+      display: block;
+      margin-top: 6px;
+      color: var(--green-mid);
+    }
+    .alert-close {
+      padding: 11px 36px;
+      border-radius: var(--radius-pill);
+      border: none;
+      font-family: 'DM Sans', sans-serif;
+      font-size: .95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all .2s;
+    }
+    .alert-close.green { background: var(--green-mid); color: #fff; }
+    .alert-close.green:hover { background: var(--green-deep); }
+    .alert-close.red { background: var(--red); color: #fff; }
+    .alert-close.red:hover { background: #b71c1c; }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 28px 20px;
+      background: var(--green-deep);
+      color: rgba(255,255,255,.5);
+      font-size: .82rem;
+    }
+    footer strong { color: var(--gold); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      .field-row { grid-template-columns: 1fr; }
+      form { padding: 22px 20px; }
+      header.site-header h1 { font-size: 2rem; }
+      nav.main-nav { padding: 12px 20px; }
+      .social-bar { padding: 8px 20px; gap: 14px; }
+    }
+  </style>
 </head>
 <body>
-    <header>Kissan Contact</header>
 
-    <section>
-        <form>
-            <p style="font-size: 1.2rem;">ہماری فیملی میں شامل ہو جاؤ</p>
+  <!-- ── SOCIAL BAR ── -->
+  <div class="social-bar">
+    <a href="https://facebook.com" target="_blank" rel="noopener"><i class="fa-brands fa-facebook"></i> Facebook</a>
+    <a href="https://youtube.com" target="_blank" rel="noopener"><i class="fa-brands fa-youtube"></i> YouTube</a>
+    <a href="https://linkedin.com" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+  </div>
 
-            <label for="name">Name</label>
-            <input type="text" id="name" placeholder="I'D Card Name" required>
+  <!-- ── NAVBAR ── -->
+  <nav class="main-nav" aria-label="Main navigation">
+    <a href="index.html" class="nav-brand">
+      <span class="leaf">🌿</span> Pak Kissan
+    </a>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+    </ul>
+  </nav>
 
-            <label for="idcard">I'D Card No.</label>
-            <input type="text" id="idcard" placeholder="Enter your ID Card No." required>
+  <!-- ── HEADER ── -->
+  <header class="site-header">
+    <h1>Kissan <span>Contact</span></h1>
+    <p class="header-urdu">ہماری فیملی میں شامل ہو جاؤ</p>
+  </header>
 
-            <label for="land">Land Area:</label>
-            <select id="land">
-                <option>1 Acre</option>
-                <option>2 Acres</option>
-                <option>3 Acres</option>
-                <option>4 Acres</option>
-                <option>5 Acres</option>
-                <option>6 Acres</option>
-                <option>7 Acres</option>
-                <option>8 Acres</option>
-                <option>9 Acres</option>
-                <option>10 Acres</option>
-            </select>
+  <!-- ── MAIN ── -->
+  <main>
+    <div class="form-card">
+      <div class="form-card-head">
+        <div class="icon-circle"><i class="fa-solid fa-tractor"></i></div>
+        <div>
+          <h2>Farmer Registration</h2>
+          <p>Fill in your details to join the Pak Kissan network</p>
+        </div>
+      </div>
 
-            <label>Add Your Contact Number or Email</label>
-            <div style="text-align: left;">
-                <input type="radio" name="contact" value="Phone"> Phone
-                <input type="radio" name="contact" value="Email"> Email
+      <form id="kissan-form" novalidate>
+
+        <!-- Row 1: Name + ID Card -->
+        <div class="field-row">
+          <div class="field">
+            <label class="field-label" for="name">Full Name</label>
+            <div class="input-wrap">
+              <i class="fa-solid fa-user"></i>
+              <input type="text" id="name" placeholder="As on ID Card" autocomplete="name">
             </div>
-
-            <input type="text" id="number" placeholder="Phone Number">
-            <input type="email" id="email" placeholder="Email">
-
-            <label for="message">Further Information about Land</label>
-            <textarea id="message" rows="3" placeholder="Write your details here"></textarea>
-
-            <div class="button">
-                <input type="reset" value="Reset">
-                <input type="submit" value="Submit">
+            <span class="error-msg" id="err-name">Please enter your full name.</span>
+          </div>
+          <div class="field">
+            <label class="field-label" for="idcard">CNIC / ID Card No.</label>
+            <div class="input-wrap">
+              <i class="fa-solid fa-id-card"></i>
+              <input type="text" id="idcard" placeholder="XXXXX-XXXXXXX-X" maxlength="15">
             </div>
-        </form>
-    </section>
+            <span class="error-msg" id="err-idcard">Enter valid CNIC (e.g. 42101-1234567-1).</span>
+          </div>
+        </div>
+
+        <!-- Row 2: Land Area -->
+        <div class="field-row single">
+          <div class="field">
+            <label class="field-label" for="land">Land Area</label>
+            <div class="input-wrap">
+              <i class="fa-solid fa-wheat-awn"></i>
+              <select id="land" onchange="updateDots(this.value)">
+                <option value="">— Select land area —</option>
+                <option value="1">1 Acre</option>
+                <option value="2">2 Acres</option>
+                <option value="3">3 Acres</option>
+                <option value="4">4 Acres</option>
+                <option value="5">5 Acres</option>
+                <option value="6">6 Acres</option>
+                <option value="7">7 Acres</option>
+                <option value="8">8 Acres</option>
+                <option value="9">9 Acres</option>
+                <option value="10">10 Acres</option>
+              </select>
+            </div>
+            <div class="acre-dots" id="acre-dots"></div>
+            <span class="error-msg" id="err-land">Please select your land area.</span>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- Contact Method -->
+        <span class="contact-section-label">Preferred Contact Method</span>
+        <div class="radio-group">
+          <label class="radio-card" id="card-phone" onclick="selectContact('phone')">
+            <input type="radio" name="contact" value="Phone">
+            <div class="dot"></div>
+            <i class="fa-solid fa-phone"></i> Phone
+          </label>
+          <label class="radio-card" id="card-email" onclick="selectContact('email')">
+            <input type="radio" name="contact" value="Email">
+            <div class="dot"></div>
+            <i class="fa-solid fa-envelope"></i> Email
+          </label>
+        </div>
+        <span class="error-msg show" id="err-contact" style="display:none">Please select a contact method.</span>
+
+        <!-- Row 3: Phone + Email -->
+        <div class="field-row">
+          <div class="field">
+            <label class="field-label" for="phone">Phone Number</label>
+            <div class="input-wrap">
+              <i class="fa-solid fa-mobile-screen"></i>
+              <input type="tel" id="phone" placeholder="0300-1234567">
+            </div>
+            <span class="error-msg" id="err-phone">Enter a valid Pakistani phone number.</span>
+          </div>
+          <div class="field">
+            <label class="field-label" for="email">Email Address</label>
+            <div class="input-wrap">
+              <i class="fa-solid fa-envelope"></i>
+              <input type="email" id="email" placeholder="name@example.com">
+            </div>
+            <span class="error-msg" id="err-email">Enter a valid email address.</span>
+          </div>
+        </div>
+
+        <!-- Row 4: Message -->
+        <div class="field-row single">
+          <div class="field">
+            <label class="field-label" for="message">Land Details &amp; Further Information</label>
+            <div class="input-wrap textarea-wrap">
+              <i class="fa-solid fa-file-lines"></i>
+              <textarea id="message" rows="4" placeholder="Describe your land location, soil type, crops grown, water source…"></textarea>
+            </div>
+            <span class="error-msg" id="err-msg">Please provide some details about your land.</span>
+          </div>
+        </div>
+
+        <!-- Buttons -->
+        <div class="btn-row">
+          <button type="button" class="btn-reset" onclick="resetForm()">
+            <i class="fa-solid fa-rotate-left"></i> Reset
+          </button>
+          <button type="button" class="btn-submit" onclick="submitForm()">
+            <i class="fa-solid fa-paper-plane"></i> Submit Registration
+          </button>
+        </div>
+
+      </form>
+    </div>
+  </main>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    &copy; 2025 <strong>Pak Kissan</strong> — Empowering Pakistan's Farmers
+  </footer>
+
+  <!-- ── CUSTOM ALERT MODAL ── -->
+  <div class="alert-overlay" id="alert-overlay" role="dialog" aria-modal="true">
+    <div class="alert-box">
+      <div class="alert-icon" id="alert-icon"></div>
+      <div class="alert-title" id="alert-title"></div>
+      <div class="alert-msg" id="alert-msg"></div>
+      <button class="alert-close" id="alert-close-btn" onclick="closeAlert()"></button>
+    </div>
+  </div>
+
+  <!-- ── JAVASCRIPT ── -->
+  <script>
+    /* ─── ACRE DOT VISUALISER ─── */
+    function updateDots(val) {
+      const c = document.getElementById('acre-dots');
+      c.innerHTML = '';
+      for (let i = 1; i <= 10; i++) {
+        const d = document.createElement('div');
+        d.className = 'acre-dot' + (i <= parseInt(val || 0) ? ' on' : '');
+        c.appendChild(d);
+      }
+    }
+    updateDots(0);
+
+    /* ─── CONTACT CARD TOGGLE ─── */
+    let selectedContact = '';
+    function selectContact(type) {
+      selectedContact = type;
+      document.getElementById('card-phone').classList.toggle('active', type === 'phone');
+      document.getElementById('card-email').classList.toggle('active', type === 'email');
+      document.getElementById('err-contact').style.display = 'none';
+    }
+
+    /* ─── CNIC AUTO-FORMAT ─── */
+    document.getElementById('idcard').addEventListener('input', function () {
+      let v = this.value.replace(/\D/g, '');
+      if (v.length > 12) v = v.slice(0, 5) + '-' + v.slice(5, 12) + '-' + v.slice(12, 13);
+      else if (v.length > 5) v = v.slice(0, 5) + '-' + v.slice(5);
+      this.value = v;
+    });
+
+    /* ─── CUSTOM ALERT ─── */
+    function showAlert(type, title, msg, btnLabel, btnClass) {
+      const icons = { success: '🌾', error: '❌', warning: '⚠️' };
+      document.getElementById('alert-icon').textContent = icons[type] || '!';
+      document.getElementById('alert-icon').className = 'alert-icon ' + type;
+      document.getElementById('alert-title').textContent = title;
+      document.getElementById('alert-msg').innerHTML = msg;
+      const btn = document.getElementById('alert-close-btn');
+      btn.textContent = btnLabel || 'OK';
+      btn.className = 'alert-close ' + (btnClass || 'green');
+      document.getElementById('alert-overlay').classList.add('show');
+    }
+    function closeAlert() {
+      document.getElementById('alert-overlay').classList.remove('show');
+    }
+    document.getElementById('alert-overlay').addEventListener('click', function (e) {
+      if (e.target === this) closeAlert();
+    });
+
+    /* ─── MARK FIELD ERROR ─── */
+    function setError(fieldId, errId, show) {
+      const field = document.getElementById(fieldId);
+      const err   = document.getElementById(errId);
+      if (show) {
+        field.classList.add('error');
+        err.classList.add('show');
+      } else {
+        field.classList.remove('error');
+        err.classList.remove('show');
+      }
+    }
+
+    /* ─── CLEAR ERROR ON INPUT ─── */
+    ['name','idcard','land','phone','email','message'].forEach(id => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      el.addEventListener('input', () => el.classList.remove('error'));
+      el.addEventListener('change', () => el.classList.remove('error'));
+    });
+
+    /* ─── VALIDATION ─── */
+    function validateForm() {
+      let valid = true;
+
+      /* Name */
+      const name = document.getElementById('name').value.trim();
+      if (!name || name.length < 3) {
+        setError('name', 'err-name', true); valid = false;
+      } else setError('name', 'err-name', false);
+
+      /* CNIC */
+      const cnic = document.getElementById('idcard').value.trim();
+      const cnicRx = /^\d{5}-\d{7}-\d{1}$/;
+      if (!cnicRx.test(cnic)) {
+        setError('idcard', 'err-idcard', true); valid = false;
+      } else setError('idcard', 'err-idcard', false);
+
+      /* Land */
+      const land = document.getElementById('land').value;
+      if (!land) {
+        setError('land', 'err-land', true); valid = false;
+      } else setError('land', 'err-land', false);
+
+      /* Contact method */
+      if (!selectedContact) {
+        document.getElementById('err-contact').style.display = 'block';
+        valid = false;
+      } else {
+        document.getElementById('err-contact').style.display = 'none';
+      }
+
+      /* Phone */
+      const phone = document.getElementById('phone').value.trim();
+      const phoneRx = /^(\+92|0)?\s?3\d{2}[-\s]?\d{7}$/;
+      if (selectedContact === 'phone' || phone) {
+        if (!phoneRx.test(phone)) {
+          setError('phone', 'err-phone', true); valid = false;
+        } else setError('phone', 'err-phone', false);
+      } else setError('phone', 'err-phone', false);
+
+      /* Email */
+      const email = document.getElementById('email').value.trim();
+      const emailRx = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (selectedContact === 'email' || email) {
+        if (!emailRx.test(email)) {
+          setError('email', 'err-email', true); valid = false;
+        } else setError('email', 'err-email', false);
+      } else setError('email', 'err-email', false);
+
+      /* Message */
+      const msg = document.getElementById('message').value.trim();
+      if (!msg || msg.length < 10) {
+        setError('message', 'err-msg', true); valid = false;
+      } else setError('message', 'err-msg', false);
+
+      return valid;
+    }
+
+    /* ─── SUBMIT ─── */
+    function submitForm() {
+      if (!validateForm()) {
+        showAlert(
+          'error',
+          'Form Incomplete',
+          'Please fix the highlighted fields before submitting.<br><span class="urdu">براہ کرم تمام ضروری معلومات درج کریں۔</span>',
+          'Fix Errors', 'red'
+        );
+        return;
+      }
+      showAlert(
+        'success',
+        'Registration Submitted!',
+        'Thank you for joining the Pak Kissan network. Our team will contact you within 2 working days.<span class="urdu">پاک کسان فیملی میں خوش آمدید!</span>',
+        'Done ✓', 'green'
+      );
+      document.getElementById('kissan-form').reset();
+      updateDots(0);
+      selectedContact = '';
+      document.getElementById('card-phone').classList.remove('active');
+      document.getElementById('card-email').classList.remove('active');
+    }
+
+    /* ─── RESET ─── */
+    function resetForm() {
+      showAlert(
+        'warning',
+        'Reset Form?',
+        'All entered data will be cleared.',
+        'Clear Form', 'red'
+      );
+      document.getElementById('alert-close-btn').onclick = function () {
+        document.getElementById('kissan-form').reset();
+        updateDots(0);
+        selectedContact = '';
+        document.getElementById('card-phone').classList.remove('active');
+        document.getElementById('card-email').classList.remove('active');
+        ['name','idcard','land','phone','email','message'].forEach(id => {
+          const el = document.getElementById(id);
+          if (el) el.classList.remove('error');
+        });
+        document.querySelectorAll('.error-msg').forEach(e => e.classList.remove('show'));
+        closeAlert();
+      };
+    }
+  </script>
 </body>
 </html>
