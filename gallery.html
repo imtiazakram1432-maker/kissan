@@ -1,134 +1,654 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pak Kissan</title>
+    <meta name="description" content="Pak Kissan Family - Pictures and Videos Gallery">
+    <title>Pak Kissan | Gallery</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
     <style>
-        
-        /* ===== Global Styles ===== */
+        /* ===== CSS Variables ===== */
+        :root {
+            --green-dark:   #1a5c1a;
+            --green-mid:    #228B22;
+            --green-light:  #4CAF50;
+            --gold:         #F5C518;
+            --gold-dark:    #c9a000;
+            --brown:        #6B3A10;
+            --cream:        #FFFBF0;
+            --white:        #ffffff;
+            --shadow:       rgba(0,0,0,0.35);
+            --radius:       16px;
+        }
+
+        /* ===== Reset ===== */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        html { scroll-behavior: smooth; }
+
         body {
-            background-color: #228B22;
-            font-family: 'Times New Roman', Times, serif;
-            text-align: center;
-            margin: 10px;
-            padding: 10px;
-            margin-top: auto;
+            background: var(--green-dark);
+            background-image:
+                radial-gradient(ellipse at 20% 10%, rgba(76,175,80,0.25) 0%, transparent 55%),
+                radial-gradient(ellipse at 80% 90%, rgba(245,197,24,0.10) 0%, transparent 50%),
+                url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            font-family: 'Lato', sans-serif;
+            color: var(--white);
+            min-height: 100vh;
         }
 
-        /* ===== Main Heading ===== */
-        h1 {
-            font-size: 3.6rem;
-            color: yellow;
-            background-color: cadetblue;
-            padding: 40px;
-            margin: auto;
-            border-radius: 0 0 20px 20px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        /* ===== HEADER ===== */
+        .site-header {
+            background: linear-gradient(135deg, var(--green-dark) 0%, #0d3d0d 100%);
+            border-bottom: 3px solid var(--gold);
+            padding: 14px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
         }
 
-        /* ===== Section Titles ===== */
-        h2 {
-            font-size: 2.5rem;
-            background-color: #8B4513;
-            color: white;
-            margin: 30px auto;
-            padding: 10px;
-            width: 40%;
-            border-radius: 20px;
+        .logo {
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .logo-icon { font-size: 2.2rem; animation: sway 3s ease-in-out infinite; display: inline-block; }
+        @keyframes sway {
+            0%,100% { transform: rotate(-5deg); }
+            50%      { transform: rotate(5deg); }
+        }
+        .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--white);
+            letter-spacing: 1px;
+        }
+        .logo-text span { color: var(--gold); }
+
+        /* ===== NAVBAR ===== */
+        nav {
+            background: var(--brown);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 40px;
+            flex-wrap: wrap;
+            gap: 8px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.4);
         }
 
-        h3 {
-            font-size: 2rem;
-            background-color: aquamarine;
-            color: black;
-            width: 250px;
-            margin: 20px auto;
-            padding: 10px;
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 4px;
+            flex-wrap: wrap;
+        }
+
+        nav ul li a {
+            display: block;
+            color: var(--cream);
+            text-decoration: none;
+            padding: 14px 18px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            border-bottom: 3px solid transparent;
+            transition: color 0.25s, border-color 0.25s, background 0.25s;
+        }
+        nav ul li a:hover,
+        nav ul li a.active {
+            color: var(--gold);
+            border-bottom-color: var(--gold);
+            background: rgba(255,255,255,0.06);
+        }
+
+        .social-strip {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+        .social-strip a {
+            color: var(--cream);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 700;
+            padding: 6px 12px;
             border-radius: 30px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: background 0.25s, color 0.25s, transform 0.2s;
+        }
+        .social-strip a:hover { transform: translateY(-2px); }
+        .social-strip a:nth-child(1):hover { background: #1877F2; }
+        .social-strip a:nth-child(2):hover { background: #FF0000; }
+        .social-strip a:nth-child(3):hover { background: #0A66C2; }
+
+        /* ===== HERO BANNER ===== */
+        .hero {
+            text-align: center;
+            padding: 60px 20px 40px;
+            position: relative;
+        }
+        .hero::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--gold), var(--green-light));
+            margin: 20px auto 0;
+            border-radius: 2px;
+        }
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.8rem, 6vw, 5rem);
+            font-weight: 900;
+            color: var(--gold);
+            text-shadow: 0 4px 20px rgba(0,0,0,0.5), 0 0 60px rgba(245,197,24,0.2);
+            letter-spacing: 2px;
+            line-height: 1.1;
+            animation: fadeDown 0.8s ease both;
+        }
+        .hero p {
+            color: rgba(255,255,255,0.75);
+            font-size: 1.1rem;
+            margin-top: 12px;
+            letter-spacing: 1px;
+            animation: fadeDown 0.8s 0.2s ease both;
+        }
+        @keyframes fadeDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to   { opacity: 1; transform: translateY(0); }
         }
 
-        /* ===== Picture Section ===== */
-        .section {
-            background-color: #7CFC00;
-            border-radius: 20px;
-            margin: 30px;
-            padding: 20px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        /* ===== SECTION WRAPPER ===== */
+        .content-section {
+            max-width: 1200px;
+            margin: 0 auto 60px;
+            padding: 0 24px;
         }
 
-        .section img {
-            margin: 10px;
-            width: 250px;
-            height: 250px;
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.6rem, 3vw, 2.4rem);
+            font-weight: 700;
+            color: var(--white);
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: linear-gradient(135deg, var(--brown), #8B4513);
+            padding: 12px 32px;
+            border-radius: 50px;
+            margin-bottom: 32px;
+            border-left: 5px solid var(--gold);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+            animation: slideIn 0.6s ease both;
+        }
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-30px); }
+            to   { opacity: 1; transform: translateX(0); }
+        }
+
+        /* ===== PICTURE GRID ===== */
+        .picture-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+            gap: 20px;
+        }
+
+        .pic-card {
+            position: relative;
+            border-radius: var(--radius);
+            overflow: hidden;
+            aspect-ratio: 1 / 1;
+            cursor: pointer;
+            box-shadow: 0 6px 24px var(--shadow);
+            border: 2px solid rgba(255,255,255,0.08);
+            background: #0d3d0d;
+        }
+
+        .pic-card img {
+            width: 100%;
+            height: 100%;
             object-fit: cover;
-            border-radius: 15px;
+            transition: transform 0.45s cubic-bezier(.25,.8,.25,1);
+            display: block;
+        }
+        .pic-card:hover img { transform: scale(1.1); }
+
+        .pic-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, transparent 60%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            display: flex;
+            align-items: flex-end;
+            padding: 16px;
+        }
+        .pic-card:hover .pic-overlay { opacity: 1; }
+        .pic-overlay span {
+            color: var(--gold);
+            font-size: 0.9rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        /* ===== LIGHTBOX ===== */
+        .lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.92);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 16px;
+            padding: 20px;
+        }
+        .lightbox.active { display: flex; animation: fadeIn 0.25s ease; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .lightbox img {
+            max-width: 90vw;
+            max-height: 80vh;
+            border-radius: 12px;
+            border: 3px solid var(--gold);
+            box-shadow: 0 0 60px rgba(245,197,24,0.3);
+        }
+        .lightbox-close {
+            position: absolute;
+            top: 20px; right: 24px;
+            font-size: 2.2rem;
+            color: var(--gold);
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .lightbox-close:hover { transform: rotate(90deg) scale(1.2); }
+        .lightbox-nav {
+            display: flex;
+            gap: 20px;
+        }
+        .lightbox-nav button {
+            background: var(--gold);
+            color: var(--brown);
+            border: none;
+            padding: 10px 22px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.2s;
+        }
+        .lightbox-nav button:hover { background: var(--gold-dark); transform: scale(1.05); }
+
+        /* ===== VIDEO GRID ===== */
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .video-card {
+            background: linear-gradient(145deg, rgba(255,255,255,0.07), rgba(255,255,255,0.02));
+            border-radius: var(--radius);
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.1);
+            box-shadow: 0 6px 24px rgba(0,0,0,0.4);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-
-        .section img:hover {
-            transform: scale(1.1);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        .video-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 16px 40px rgba(0,0,0,0.5);
+        }
+        .video-card video {
+            width: 100%;
+            display: block;
+            max-height: 220px;
+            background: #000;
+        }
+        .video-label {
+            padding: 10px 14px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--gold);
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
-        /* ===== Video Section ===== */
-        #video {
-            background-color: #f5f5f5;
-            border-radius: 20px;
-            margin: 30px;
-            padding: 30px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        /* ===== FOOTER ===== */
+        footer {
+            background: linear-gradient(135deg, #0a2a0a 0%, #111 100%);
+            border-top: 3px solid var(--gold);
+            padding: 48px 40px 0;
+            margin-top: 60px;
         }
 
-        video {
-            width: 300px;
-            margin: 10px;
-            border-radius: 10px;
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 40px;
+            max-width: 1100px;
+            margin: 0 auto 40px;
+        }
+
+        .footer-col h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            color: var(--gold);
+            margin-bottom: 18px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(245,197,24,0.3);
+        }
+
+        .footer-col p {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.95rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: color 0.2s;
+        }
+        .footer-col p:hover { color: var(--white); }
+        .footer-col p i { color: var(--green-light); width: 18px; }
+
+        .footer-col iframe {
+            border-radius: 12px;
+            border: 2px solid rgba(245,197,24,0.4) !important;
+            width: 100%;
+            max-width: 320px;
+            height: 220px;
+            display: block;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+            padding: 20px 16px;
+            font-size: 0.88rem;
+            color: rgba(255,255,255,0.55);
+            letter-spacing: 0.5px;
+        }
+        .footer-bottom strong { color: var(--gold); }
+
+        /* ===== SCROLL TO TOP ===== */
+        #scrollTop {
+            position: fixed;
+            bottom: 28px;
+            right: 28px;
+            background: var(--gold);
+            color: var(--brown);
+            border: none;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            font-size: 1.3rem;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+            transition: transform 0.2s, background 0.2s;
+            z-index: 800;
+        }
+        #scrollTop:hover { transform: scale(1.15); background: var(--gold-dark); }
+        #scrollTop.visible { display: flex; animation: popIn 0.3s ease; }
+        @keyframes popIn {
+            from { transform: scale(0); }
+            to   { transform: scale(1); }
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 700px) {
+            .site-header { padding: 12px 18px; }
+            nav { padding: 0 10px; }
+            nav ul li a { padding: 12px 10px; font-size: 0.85rem; }
+            .social-strip a { font-size: 0.78rem; padding: 5px 8px; }
+            .picture-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+            .video-grid { grid-template-columns: 1fr; }
+            footer { padding: 32px 18px 0; }
         }
     </style>
 </head>
-
 <body>
 
-    <h1>Kissan Family</h1>
+<!-- ===== HEADER ===== -->
+<header class="site-header">
+    <a href="index.php" class="logo">
+        <span class="logo-icon">🌾</span>
+        <span class="logo-text">Pak <span>Kissan</span></span>
+    </a>
+</header>
 
-    <!-- ===== Picture Section ===== -->
-    <div class="section">
-        <h2>PICTURES</h2>
-        <img src="asset\18.jfif" alt="kissan">
-        <img src="asset\20.jfif" alt="kissan">
-        <img src="asset\26.jfif" alt="kissan">
-        <img src="assset\21.jfif" alt="kissan">
-        <img src="asset\22.jfif" alt="kissan">
-        <img src="asset\23.jfif" alt="kissan">
-        <img src="asset\24.jfif" alt="kissan">
-        <img src="asset\25.jfif" alt="kissan">
+<!-- ===== NAVBAR ===== -->
+<nav>
+    <ul>
+        <li><a href="index.php"><i class="fa-solid fa-house"></i> Home</a></li>
+        <li><a href="about.html"><i class="fa-solid fa-circle-info"></i> About</a></li>
+        <li><a href="gallery.html" class="active"><i class="fa-solid fa-images"></i> Gallery</a></li>
+        <li><a href="contact.html"><i class="fa-solid fa-envelope"></i> Contact</a></li>
+    </ul>
+    <div class="social-strip">
+        <a href="https://facebook.com" target="_blank" rel="noopener">
+            <i class="fa-brands fa-facebook"></i> Facebook
+        </a>
+        <a href="https://youtube.com" target="_blank" rel="noopener">
+            <i class="fa-brands fa-youtube"></i> YouTube
+        </a>
+        <a href="https://linkedin.com" target="_blank" rel="noopener">
+            <i class="fa-brands fa-linkedin"></i> LinkedIn
+        </a>
     </div>
+</nav>
 
-    <!-- ===== Video Section ===== -->
-    <div id="video">
-        <h3><b>VIDEOS</b></h3>
-        <video controls>
-            <source src="asset\01.mp4">
-        </video>
-        <video controls>
-            <source src="asset\02.mp4">
-        </video>
-        <video controls>
-            <source src="asset\03.mp4">
-        </video>
-        <video controls>
-            <source src="asset\04.mp4">
-        </video>
-        <video controls>
-            <source src="asset\06.mp4">
-        </video>
-        <video controls>
-            <source src="asset\07.mp4">
-        </video>
+<!-- ===== HERO ===== -->
+<div class="hero">
+    <h1>🌾 Kissan Family Gallery</h1>
+    <p>Our moments, our fields, our story</p>
+</div>
+
+<!-- ===== PICTURES ===== -->
+<div class="content-section">
+    <div class="section-title">
+        <i class="fa-solid fa-images"></i> Pictures
     </div>
+    <div class="picture-grid" id="picGrid">
+        <div class="pic-card" onclick="openLightbox(0)">
+            <img src="asset/18.jfif" alt="Kissan Farmer 1" loading="lazy">
+            <div class="pic-overlay"><span>📷 Photo 1</span></div>
+        </div>
+        <div class="pic-card" onclick="openLightbox(1)">
+            <img src="asset/20.jfif" alt="Kissan Farmer 2" loading="lazy">
+            <div class="pic-overlay"><span>📷 Photo 2</span></div>
+        </div>
+        <div class="pic-card" onclick="openLightbox(2)">
+            <img src="asset/26.jfif" alt="Kissan Farmer 3" loading="lazy">
+            <div class="pic-overlay"><span>📷 Photo 3</span></div>
+        </div>
+        <div class="pic-card" onclick="openLightbox(3)">
+            <img src="asset/21.jfif" alt="Kissan Farmer 4" loading="lazy">
+            <div class="pic-overlay"><span>📷 Photo 4</span></div>
+        </div>
+        <div class="pic-card" onclick="openLightbox(4)">
+            <img src="asset/22.jfif" alt="Kissan Farmer 5" loading="lazy">
+            <div class="pic-overlay"><span>📷 Photo 5</span></div>
+        </div>
+        <div class="pic-card" onclick="openLightbox(5)">
+            <img src="asset/23.jfif" alt="Kissan Farmer 6" loading="lazy">
+            <div class="pic-overlay"><span>📷 Photo 6</span></div>
+        </div>
+        <div class="pic-card" onclick="openLightbox(6)">
+            <img src="asset/24.jfif" alt="Kissan Farmer 7" loading="lazy">
+            <div class="pic-overlay"><span>📷 Photo 7</span></div>
+        </div>
+        <div class="pic-card" onclick="openLightbox(7)">
+            <img src="asset/25.jfif" alt="Kissan Farmer 8" loading="lazy">
+            <div class="pic-overlay"><span>📷 Photo 8</span></div>
+        </div>
+    </div>
+</div>
 
+<!-- ===== LIGHTBOX ===== -->
+<div class="lightbox" id="lightbox">
+    <span class="lightbox-close" onclick="closeLightbox()">✕</span>
+    <img id="lightboxImg" src="" alt="Gallery Image">
+    <div class="lightbox-nav">
+        <button onclick="changePic(-1)"><i class="fa-solid fa-arrow-left"></i> Prev</button>
+        <button onclick="changePic(1)">Next <i class="fa-solid fa-arrow-right"></i></button>
+    </div>
+</div>
+
+<!-- ===== VIDEOS ===== -->
+<div class="content-section">
+    <div class="section-title">
+        <i class="fa-solid fa-video"></i> Videos
+    </div>
+    <div class="video-grid">
+        <div class="video-card">
+            <video controls preload="metadata">
+                <source src="asset/01.mp4" type="video/mp4">
+            </video>
+            <div class="video-label"><i class="fa-solid fa-play-circle"></i> Video 1</div>
+        </div>
+        <div class="video-card">
+            <video controls preload="metadata">
+                <source src="asset/02.mp4" type="video/mp4">
+            </video>
+            <div class="video-label"><i class="fa-solid fa-play-circle"></i> Video 2</div>
+        </div>
+        <div class="video-card">
+            <video controls preload="metadata">
+                <source src="asset/03.mp4" type="video/mp4">
+            </video>
+            <div class="video-label"><i class="fa-solid fa-play-circle"></i> Video 3</div>
+        </div>
+        <div class="video-card">
+            <video controls preload="metadata">
+                <source src="asset/04.mp4" type="video/mp4">
+            </video>
+            <div class="video-label"><i class="fa-solid fa-play-circle"></i> Video 4</div>
+        </div>
+        <div class="video-card">
+            <video controls preload="metadata">
+                <source src="asset/06.mp4" type="video/mp4">
+            </video>
+            <div class="video-label"><i class="fa-solid fa-play-circle"></i> Video 5</div>
+        </div>
+        <div class="video-card">
+            <video controls preload="metadata">
+                <source src="asset/07.mp4" type="video/mp4">
+            </video>
+            <div class="video-label"><i class="fa-solid fa-play-circle"></i> Video 6</div>
+        </div>
+    </div>
+</div>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+    <div class="footer-grid">
+        <div class="footer-col">
+            <h4>🌾 Pak Kissan</h4>
+            <p><i class="fa-solid fa-location-dot"></i> Lahore, Punjab, Pakistan</p>
+            <p><i class="fa-solid fa-phone"></i> 0312-0404665</p>
+            <p><i class="fa-solid fa-headset"></i> Helpline: 0800-KISSAN</p>
+            <p><i class="fa-solid fa-envelope"></i> info@pakkissan.pk</p>
+        </div>
+        <div class="footer-col">
+            <h4>📍 ہماری لوکیشن</h4>
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2475.3654314670057!2d74.35117027398222!3d31.52800924676747!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3919052d4f9236e3%3A0x4bbf26d640b1f0db!2sGovt.%20Technical%20Training%20Institute%2C%20Gulberg%20II%20Lahore!5e1!3m2!1sen!2s!4v1780319466630!5m2!1sen!2s"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                title="GTTI Gulberg Lahore Location">
+            </iframe>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        © 2026 Pak Kissan &nbsp;|&nbsp; Project by &nbsp;|&nbsp; GTTI Gulberg Lahore &nbsp;|&nbsp;
+        Student: <strong>Muhammad Imtiaz</strong> &nbsp;|&nbsp;
+        <i class="fa-solid fa-shield-halved"></i>
+    </div>
+</footer>
+
+<!-- ===== SCROLL TO TOP ===== -->
+<button id="scrollTop" title="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+    <i class="fa-solid fa-chevron-up"></i>
+</button>
+
+<script>
+    // ===== Lightbox =====
+    const images = Array.from(document.querySelectorAll('#picGrid .pic-card img')).map(i => i.src);
+    let currentIndex = 0;
+
+    function openLightbox(idx) {
+        currentIndex = idx;
+        document.getElementById('lightboxImg').src = images[idx];
+        document.getElementById('lightbox').classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox() {
+        document.getElementById('lightbox').classList.remove('active');
+        document.body.style.overflow = '';
+    }
+    function changePic(dir) {
+        currentIndex = (currentIndex + dir + images.length) % images.length;
+        document.getElementById('lightboxImg').src = images[currentIndex];
+    }
+    document.getElementById('lightbox').addEventListener('click', function(e) {
+        if (e.target === this) closeLightbox();
+    });
+    document.addEventListener('keydown', function(e) {
+        if (!document.getElementById('lightbox').classList.contains('active')) return;
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowLeft') changePic(-1);
+        if (e.key === 'ArrowRight') changePic(1);
+    });
+
+    // ===== Scroll To Top =====
+    const scrollBtn = document.getElementById('scrollTop');
+    window.addEventListener('scroll', () => {
+        scrollBtn.classList.toggle('visible', window.scrollY > 300);
+    });
+
+    // ===== Scroll Reveal =====
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((e, i) => {
+            if (e.isIntersecting) {
+                e.target.style.transitionDelay = (i * 0.07) + 's';
+                e.target.classList.add('revealed');
+                observer.unobserve(e.target);
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.pic-card, .video-card').forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(30px)';
+        el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        observer.observe(el);
+    });
+
+    document.addEventListener('animationend', () => {});
+
+    // Add revealed class via JS to trigger transition
+    const style = document.createElement('style');
+    style.textContent = '.revealed { opacity: 1 !important; transform: translateY(0) !important; }';
+    document.head.appendChild(style);
+</script>
 </body>
 </html>
