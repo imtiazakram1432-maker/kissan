@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pak Kissan | کسان دوست پلیٹ فارم</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;600;700&family=Teko:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green-dark:   #1b4332;
+      --green-mid:    #2d6a4f;
+      --green-light:  #40916c;
+      --green-pale:   #d8f3dc;
+      --gold:         #e9c46a;
+      --gold-dark:    #c9a227;
+      --cream:        #fefae0;
+      --brown:        #6b4226;
+      --text-dark:    #1a1a1a;
+      --text-mid:     #3d3d3d;
+      --text-light:   #6b7280;
+      --white:        #ffffff;
+      --shadow:       0 4px 24px rgba(27,67,50,0.10);
+      --shadow-lg:    0 8px 40px rgba(27,67,50,0.16);
+      --radius:       12px;
+      --radius-lg:    20px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Noto Nastaliq Urdu', serif;
+      background: var(--cream);
+      color: var(--text-dark);
+      line-height: 1.8;
+    }
+
+    /* ── HEADER ── */
+    .site-header {
+      background: var(--green-dark);
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.18);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .logo-icon {
+      font-size: 28px;
+      animation: sway 3s ease-in-out infinite;
+    }
+
+    @keyframes sway {
+      0%, 100% { transform: rotate(-5deg); }
+      50%       { transform: rotate(5deg); }
+    }
+
+    .logo-text {
+      font-family: 'Teko', sans-serif;
+      font-size: 26px;
+      color: var(--white);
+      letter-spacing: 1px;
+    }
+
+    .logo-text span { color: var(--gold); }
+
+    .header-tagline {
+      font-size: 12px;
+      color: var(--green-pale);
+      display: none;
+    }
+
+    @media (min-width: 640px) { .header-tagline { display: block; } }
+
+    /* ── NAV ── */
+    nav {
+      background: var(--green-mid);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2rem;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 4px;
+      flex-wrap: wrap;
+    }
+
+    nav ul li a {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 10px 16px;
+      color: var(--green-pale);
+      text-decoration: none;
+      font-family: 'Teko', sans-serif;
+      font-size: 16px;
+      letter-spacing: 0.5px;
+      border-radius: 6px;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    nav ul li a:hover,
+    nav ul li a.active {
+      background: var(--green-dark);
+      color: var(--gold);
+    }
+
+    .social-strip {
+      display: flex;
+      gap: 8px;
+    }
+
+    .social-strip a {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding: 6px 12px;
+      color: var(--green-pale);
+      text-decoration: none;
+      font-family: 'Teko', sans-serif;
+      font-size: 14px;
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 20px;
+      transition: all 0.2s;
+    }
+
+    .social-strip a:hover { background: var(--gold); color: var(--green-dark); border-color: var(--gold); }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(135deg, var(--green-dark) 0%, var(--green-mid) 60%, #52b788 100%);
+      color: var(--white);
+      text-align: center;
+      padding: 5rem 2rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+
+    .hero h1 {
+      font-size: clamp(1.6rem, 5vw, 3rem);
+      font-weight: 700;
+      margin-bottom: 1rem;
+      position: relative;
+    }
+
+    .hero p {
+      font-size: clamp(0.95rem, 2vw, 1.15rem);
+      color: var(--green-pale);
+      max-width: 600px;
+      margin: 0 auto 2rem;
+      position: relative;
+    }
+
+    .hero-badges {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      position: relative;
+    }
+
+    .badge {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.22);
+      backdrop-filter: blur(8px);
+      padding: 8px 18px;
+      border-radius: 30px;
+      font-size: 0.9rem;
+      color: var(--white);
+      transition: transform 0.2s, background 0.2s;
+    }
+
+    .badge:hover { transform: translateY(-2px); background: rgba(255,255,255,0.2); }
+
+    .hero-scroll {
+      margin-top: 2.5rem;
+      font-size: 22px;
+      color: var(--gold);
+      animation: bounce 1.8s ease-in-out infinite;
+      position: relative;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(6px); }
+    }
+
+    /* ── FEATURES ── */
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 20px;
+      padding: 3rem 2rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .feature-card {
+      background: var(--white);
+      border: 1px solid #d1fae5;
+      border-radius: var(--radius-lg);
+      padding: 2rem 1.5rem;
+      text-align: center;
+      box-shadow: var(--shadow);
+      transition: transform 0.25s, box-shadow 0.25s;
+      cursor: default;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .feature-card .icon { font-size: 2.5rem; margin-bottom: 10px; }
+
+    .feature-card h4 {
+      color: var(--green-dark);
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    /* ── SECTION TITLE ── */
+    .section-title {
+      text-align: center;
+      padding: 1rem 2rem 0;
+    }
+
+    .section-title h2 {
+      font-size: clamp(1.3rem, 3vw, 1.9rem);
+      color: var(--green-dark);
+      font-weight: 700;
+    }
+
+    .section-title p {
+      color: var(--text-light);
+      font-size: 0.95rem;
+      margin-top: 6px;
+    }
+
+    .divider {
+      width: 60px;
+      height: 4px;
+      background: var(--gold);
+      border-radius: 2px;
+      margin: 10px auto 0;
+    }
+
+    /* ── CALCULATOR ── */
+    .calculator-section {
+      padding: 2rem 2rem 3rem;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .calc-box {
+      background: var(--white);
+      border: 1px solid #d1fae5;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .calc-header {
+      background: var(--green-dark);
+      padding: 1.25rem 1.75rem;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .calc-header i { font-size: 22px; color: var(--gold); }
+
+    .calc-header h3 {
+      font-family: 'Teko', sans-serif;
+      font-size: 22px;
+      color: var(--white);
+      font-weight: 500;
+      letter-spacing: 0.5px;
+    }
+
+    .calc-header span {
+      margin-right: auto;
+      font-size: 12px;
+      color: var(--green-pale);
+    }
+
+    .calc-body { padding: 1.75rem; }
+
+    .rate-info {
+      background: var(--green-pale);
+      border-right: 4px solid var(--green-light);
+      padding: 10px 16px;
+      border-radius: 8px;
+      margin-bottom: 1.5rem;
+      font-size: 0.88rem;
+      color: var(--green-dark);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .input-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 14px;
+      margin-bottom: 1rem;
+    }
+
+    .form-group { display: flex; flex-direction: column; gap: 5px; }
+
+    .form-group label {
+      font-size: 0.82rem;
+      color: var(--text-mid);
+      font-weight: 600;
+    }
+
+    .form-group input,
+    .form-group select {
+      padding: 9px 12px;
+      border: 1.5px solid #d1fae5;
+      border-radius: 8px;
+      font-family: 'Noto Nastaliq Urdu', serif;
+      font-size: 0.9rem;
+      color: var(--text-dark);
+      background: var(--cream);
+      transition: border-color 0.2s, box-shadow 0.2s;
+      outline: none;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus {
+      border-color: var(--green-light);
+      box-shadow: 0 0 0 3px rgba(64,145,108,0.12);
+      background: var(--white);
+    }
+
+    .btn-add {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 24px;
+      background: var(--green-mid);
+      color: var(--white);
+      border: none;
+      border-radius: 8px;
+      font-family: 'Noto Nastaliq Urdu', serif;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      white-space: nowrap;
+    }
+
+    .btn-add:hover { background: var(--green-dark); transform: scale(1.02); }
+    .btn-add:active { transform: scale(0.98); }
+
+    /* summary cards */
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 12px;
+      margin: 1.5rem 0;
+    }
+
+    .metric-card {
+      background: var(--cream);
+      border: 1px solid #d1fae5;
+      border-radius: var(--radius);
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .metric-label {
+      font-size: 0.78rem;
+      color: var(--text-light);
+      margin-bottom: 4px;
+    }
+
+    .metric-value {
+      font-family: 'Teko', sans-serif;
+      font-size: 1.7rem;
+      font-weight: 600;
+      color: var(--green-dark);
+      letter-spacing: 0.5px;
+    }
+
+    .metric-value.gold { color: var(--gold-dark); }
+
+    /* table */
+    .table-wrapper {
+      overflow-x: auto;
+      border: 1px solid #d1fae5;
+      border-radius: var(--radius);
+      margin-top: 1rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+      min-width: 560px;
+    }
+
+    thead {
+      background: var(--green-dark);
+      color: var(--white);
+    }
+
+    thead th {
+      padding: 11px 14px;
+      text-align: right;
+      font-weight: 500;
+      font-size: 0.82rem;
+      white-space: nowrap;
+    }
+
+    tbody tr {
+      border-bottom: 1px solid #d1fae5;
+      transition: background 0.15s;
+    }
+
+    tbody tr:last-child { border-bottom: none; }
+    tbody tr:hover { background: #f0fdf4; }
+
+    tbody td {
+      padding: 10px 14px;
+      text-align: right;
+      color: var(--text-dark);
+    }
+
+    .td-num {
+      font-family: 'Teko', sans-serif;
+      font-size: 1rem;
+      letter-spacing: 0.4px;
+    }
+
+    .td-profit { color: var(--green-mid); font-weight: 600; }
+    .td-total  { color: var(--gold-dark);  font-weight: 700; }
+
+    tfoot tr { background: var(--green-pale); }
+
+    tfoot td {
+      padding: 10px 14px;
+      text-align: right;
+      font-weight: 700;
+      color: var(--green-dark);
+      font-size: 0.9rem;
+    }
+
+    .btn-del {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #dc2626;
+      font-size: 14px;
+      padding: 4px 8px;
+      border-radius: 6px;
+      transition: background 0.15s;
+    }
+
+    .btn-del:hover { background: #fee2e2; }
+
+    .empty-row td {
+      text-align: center;
+      padding: 2.5rem;
+      color: var(--text-light);
+      font-size: 0.9rem;
+    }
+
+    .btn-clear {
+      margin-top: 1rem;
+      padding: 8px 18px;
+      background: none;
+      border: 1px solid #dc2626;
+      color: #dc2626;
+      border-radius: 8px;
+      font-family: 'Noto Nastaliq Urdu', serif;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-clear:hover { background: #dc2626; color: var(--white); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--green-dark);
+      color: var(--green-pale);
+      margin-top: 3rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+      padding: 3rem 2rem 2rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .footer-col h4 {
+      font-family: 'Teko', sans-serif;
+      font-size: 20px;
+      color: var(--gold);
+      margin-bottom: 1rem;
+      letter-spacing: 0.5px;
+    }
+
+    .footer-col p {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+      font-size: 0.85rem;
+    }
+
+    .footer-col p i { color: var(--gold); width: 16px; }
+
+    .footer-col iframe {
+      border: none;
+      border-radius: var(--radius);
+      display: block;
+      width: 100%;
+      max-width: 320px;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      text-align: center;
+      padding: 1rem 2rem;
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.5);
+    }
+
+    .footer-bottom strong { color: var(--gold); }
+
+    /* ── SCROLL TO TOP ── */
+    .scroll-top {
+      position: fixed;
+      bottom: 24px;
+      left: 24px;
+      width: 42px;
+      height: 42px;
+      background: var(--green-mid);
+      color: var(--white);
+      border: none;
+      border-radius: 50%;
+      font-size: 18px;
+      cursor: pointer;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--shadow);
+      transition: background 0.2s, transform 0.2s;
+      z-index: 200;
+    }
+
+    .scroll-top:hover { background: var(--green-dark); transform: scale(1.1); }
+    .scroll-top.visible { display: flex; }
+  </style>
+</head>
+
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="site-header">
+    <a href="index.php" class="logo">
+      <span class="logo-icon">🌾</span>
+      <span class="logo-text">Pak <span>Kissan</span></span>
+    </a>
+    <span class="header-tagline">کسانوں کا بہترین ساتھی</span>
+  </header>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav>
+    <ul>
+      <li><a href="index.html" class="active"><i class="fa-solid fa-house"></i> Home</a></li>
+      <li><a href="about.html"><i class="fa-solid fa-circle-info"></i> About Information</a></li>
+      <li><a href="gallery.html"><i class="fa-solid fa-images"></i> Gallery</a></li>
+      <li><a href="contact.html"><i class="fa-solid fa-envelope"></i> Contact</a></li>
+    </ul>
+    <div class="social-strip">
+      <a href="https://facebook.com" target="_blank" rel="noopener"><i class="fa-brands fa-facebook"></i> Facebook</a>
+      <a href="https://youtube.com"  target="_blank" rel="noopener"><i class="fa-brands fa-youtube"></i> YouTube</a>
+      <a href="https://linkedin.com" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+    </div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+    <h1>🌿 کسان دوست پلیٹ فارم</h1>
+    <p>کسانوں کے لیے جدید زرعی معلومات، بہتر پیداوار، اور منافع بخش کاشتکاری کے مکمل حل۔</p>
+    <div class="hero-badges">
+      <div class="badge"><i class="fa-solid fa-droplet" style="color:#7dd3fc"></i> آبپاشی اور نوکریاں</div>
+      <div class="badge"><i class="fa-solid fa-tractor" style="color:#fcd34d"></i> جدید تکنیک</div>
+      <div class="badge"><i class="fa-solid fa-chart-line" style="color:#86efac"></i> منافع بخش کاشتکاری</div>
+    </div>
+    <div class="hero-scroll"><i class="fa-solid fa-angles-down"></i></div>
+  </section>
+
+  <!-- ===== FEATURES ===== -->
+  <section class="features">
+    <div class="feature-card">
+      <div class="icon">🌾</div>
+      <h4>فصل کی معلومات</h4>
+    </div>
+    <div class="feature-card">
+      <div class="icon">💧</div>
+      <h4>آبپاشی گائیڈ</h4>
+    </div>
+    <div class="feature-card">
+      <div class="icon">📊</div>
+      <h4>مارکیٹ ریٹ</h4>
+    </div>
+    <div class="feature-card">
+      <div class="icon">🤝</div>
+      <h4>کسان سپورٹ</h4>
+    </div>
+  </section>
+
+  <!-- ===== CALCULATOR SECTION ===== -->
+  <div class="section-title">
+    <h2>🧮 زمین منافع کیلکولیٹر</h2>
+    <p>اپنی زمین کا رقبہ درج کریں اور سالانہ منافع جانیں</p>
+    <div class="divider"></div>
+  </div>
+
+  <section class="calculator-section">
+    <div class="calc-box">
+
+      <!-- header bar -->
+      <div class="calc-header">
+        <i class="fa-solid fa-calculator"></i>
+        <h3>منافع کیلکولیٹر</h3>
+        <span>1 ایکڑ = ₨ 60,000 سالانہ</span>
+      </div>
+
+      <div class="calc-body">
+
+        <!-- info strip -->
+        <div class="rate-info">
+          <i class="fa-solid fa-circle-info"></i>
+          موجودہ منافع کی شرح: <strong>1 ایکڑ = ₨ 60,000 فی سال</strong> — اپنا رقبہ کسی بھی اکائی میں درج کریں۔
+        </div>
+
+        <!-- input row -->
+        <div class="input-grid">
+          <div class="form-group">
+            <label><i class="fa-solid fa-user"></i> مالک کا نام</label>
+            <input type="text" id="ownerName" placeholder="  مثال: محمد  " />
+          </div>
+          <div class="form-group">
+            <label><i class="fa-solid fa-map"></i> رقبہ</label>
+            <input type="number" id="areaInput" placeholder="0" min="0.1" step="0.5" />
+          </div>
+          <div class="form-group">
+            <label><i class="fa-solid fa-ruler"></i> اکائی</label>
+            <select id="unitSelect">
+              <option value="acre">ایکڑ (Acre)</option>
+              <option value="marla">مرلہ (Marla)</option>
+              <option value="kanal">کنال (Kanal)</option>
+              <option value="hectare">ہیکٹر (Hectare)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label><i class="fa-solid fa-calendar"></i> سال</label>
+            <input type="number" id="yearsInput" value="1" min="1" max="50" />
+          </div>
+          <div class="form-group" style="justify-content: flex-end;">
+            <label>&nbsp;</label>
+            <button class="btn-add" onclick="addEntry()">
+              <i class="fa-solid fa-plus"></i> شامل کریں
+            </button>
+          </div>
+        </div>
+
+        <!-- summary cards (hidden until entries exist) -->
+        <div class="summary-grid" id="summaryCards" style="display:none">
+          <div class="metric-card">
+            <div class="metric-label">کل رقبہ (ایکڑ)</div>
+            <div class="metric-value" id="smTotalAcres">0</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-label">سالانہ منافع</div>
+            <div class="metric-value gold" id="smAnnual">₨0</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-label">کل منافع</div>
+            <div class="metric-value gold" id="smTotal">₨0</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-label">ماہانہ اوسط</div>
+            <div class="metric-value" id="smMonthly">₨0</div>
+          </div>
+        </div>
+
+        <!-- table -->
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>مالک کا نام</th>
+                <th>رقبہ</th>
+                <th>ایکڑ</th>
+                <th>سال</th>
+                <th>سالانہ منافع</th>
+                <th>کل منافع</th>
+                <th>حذف</th>
+              </tr>
+            </thead>
+            <tbody id="tableBody">
+              <tr class="empty-row">
+                <td colspan="8">
+                  <i class="fa-solid fa-seedling" style="font-size:1.4rem; color:#86efac; display:block; margin-bottom:6px;"></i>
+                  ابھی کوئی اندراج نہیں — اوپر رقبہ درج کریں
+                </td>
+              </tr>
+            </tbody>
+            <tfoot id="tableFoot"></tfoot>
+          </table>
+        </div>
+
+        <!-- clear button -->
+        <button class="btn-clear" id="btnClear" style="display:none" onclick="clearAll()">
+          <i class="fa-solid fa-trash"></i> سب حذف کریں
+        </button>
+
+      </div><!-- /.calc-body -->
+    </div><!-- /.calc-box -->
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>🌾 Pak Kissan</h4>
+        <p><i class="fa-solid fa-location-dot"></i> Lahore, Punjab, Pakistan</p>
+        <p><i class="fa-solid fa-phone"></i> 0312-0404665</p>
+        <p><i class="fa-solid fa-headset"></i> Helpline: 0800-KISSAN</p>
+        <p><i class="fa-solid fa-envelope"></i> info@pakkissan.pk</p>
+      </div>
+      <div class="footer-col">
+        <h4>📍 ہماری لوکیشن</h4>
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2475.3654314670057!2d74.35117027398222!3d31.52800924676747!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3919052d4f9236e3%3A0x4bbf26d640b1f0db!2sGovt.%20Technical%20Training%20Institute%2C%20Gulberg%20II%20Lahore!5e1!3m2!1sen!2s!4v1780319466630!5m2!1sen!2s"
+          height="220" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2026 Pak Kissan &nbsp;|&nbsp; Project by &nbsp;|&nbsp; GTTI Ghulburg Lahore &nbsp;|&nbsp;
+      Student <strong>Muhammad Imtiaz</strong> &nbsp;|&nbsp;
+      <i class="fa-solid fa-shield-halved"></i>
+    </div>
+  </footer>
+
+  <!-- scroll-to-top -->
+  <button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="اوپر جائیں">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+
+  <!-- ===== JS ===== -->
+  <script>
+    const RATE        = 60000;
+    const CONVERSIONS = { acre: 1, marla: 1/160, kanal: 1/8, hectare: 2.47105 };
+    const UNIT_LABELS = { acre: 'ایکڑ', marla: 'مرلہ', kanal: 'کنال', hectare: 'ہیکٹر' };
+
+    let entries = [];
+    let counter = 0;
+
+    function pkr(n)    { return '₨\u202F' + Math.round(n).toLocaleString('en-PK'); }
+    function num(n, d)  { return parseFloat(n.toFixed(d ?? 2)).toLocaleString('en-PK'); }
+
+    function addEntry() {
+      const name  = document.getElementById('ownerName').value.trim() || 'نامعلوم';
+      const area  = parseFloat(document.getElementById('areaInput').value);
+      const unit  = document.getElementById('unitSelect').value;
+      const years = Math.max(1, parseInt(document.getElementById('yearsInput').value) || 1);
+
+      if (!area || area <= 0) {
+        alert('براہ کرم درست رقبہ درج کریں');
+        document.getElementById('areaInput').focus();
+        return;
+      }
+
+      counter++;
+      const acres  = area * CONVERSIONS[unit];
+      const annual = acres * RATE;
+      const total  = annual * years;
+      entries.push({ id: counter, name, area, unit, acres, years, annual, total });
+
+      renderTable();
+      document.getElementById('ownerName').value  = '';
+      document.getElementById('areaInput').value  = '';
+      document.getElementById('yearsInput').value = '1';
+      document.getElementById('ownerName').focus();
+    }
+
+    function removeEntry(id) {
+      entries = entries.filter(e => e.id !== id);
+      renderTable();
+    }
+
+    function clearAll() {
+      if (!confirm('کیا آپ واقعی سب اندراج حذف کرنا چاہتے ہیں؟')) return;
+      entries = [];
+      counter = 0;
+      renderTable();
+    }
+
+    function renderTable() {
+      const tbody  = document.getElementById('tableBody');
+      const tfoot  = document.getElementById('tableFoot');
+      const cards  = document.getElementById('summaryCards');
+      const btnClr = document.getElementById('btnClear');
+
+      if (entries.length === 0) {
+        tbody.innerHTML = `<tr class="empty-row"><td colspan="8">
+          <i class="fa-solid fa-seedling" style="font-size:1.4rem;color:#86efac;display:block;margin-bottom:6px;"></i>
+          ابھی کوئی اندراج نہیں — اوپر رقبہ درج کریں
+        </td></tr>`;
+        tfoot.innerHTML   = '';
+        cards.style.display  = 'none';
+        btnClr.style.display = 'none';
+        return;
+      }
+
+      cards.style.display  = 'grid';
+      btnClr.style.display = 'inline-flex';
+
+      tbody.innerHTML = entries.map(e => `
+        <tr>
+          <td style="color:var(--text-light);font-size:.8rem">${e.id}</td>
+          <td>${e.name}</td>
+          <td class="td-num">${num(e.area)} ${UNIT_LABELS[e.unit]}</td>
+          <td class="td-num">${num(e.acres)}</td>
+          <td class="td-num">${e.years}</td>
+          <td class="td-num td-profit">${pkr(e.annual)}</td>
+          <td class="td-num td-total">${pkr(e.total)}</td>
+          <td><button class="btn-del" onclick="removeEntry(${e.id})" title="حذف کریں"><i class="fa-solid fa-xmark"></i></button></td>
+        </tr>
+      `).join('');
+
+      const totalAcres  = entries.reduce((s, e) => s + e.acres,  0);
+      const totalAnnual = entries.reduce((s, e) => s + e.annual, 0);
+      const totalProfit = entries.reduce((s, e) => s + e.total,  0);
+      const monthly     = totalAnnual / 12;
+
+      if (entries.length > 1) {
+        tfoot.innerHTML = `<tr>
+          <td colspan="3" style="color:var(--green-mid);">مجموعی</td>
+          <td class="td-num">${num(totalAcres)}</td>
+          <td></td>
+          <td class="td-num td-profit">${pkr(totalAnnual)}</td>
+          <td class="td-num td-total">${pkr(totalProfit)}</td>
+          <td></td>
+        </tr>`;
+      } else { tfoot.innerHTML = ''; }
+
+      document.getElementById('smTotalAcres').textContent = num(totalAcres);
+      document.getElementById('smAnnual').textContent     = pkr(totalAnnual);
+      document.getElementById('smTotal').textContent      = pkr(totalProfit);
+      document.getElementById('smMonthly').textContent    = pkr(monthly);
+    }
+
+    /* Enter key shortcut */
+    ['ownerName','areaInput','yearsInput'].forEach(id => {
+      document.getElementById(id).addEventListener('keydown', e => {
+        if (e.key === 'Enter') addEntry();
+      });
+    });
+
+    /* Scroll-to-top button */
+    window.addEventListener('scroll', () => {
+      document.getElementById('scrollTop').classList.toggle('visible', window.scrollY > 300);
+    });
+  </script>
+
+</body>
+</html>
